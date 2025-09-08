@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="style.css">
+  <title>Jogo da Forca</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Jogo da Forca</h1>
+
+    <div id="dica"></div>
+    <div id="nivelDificuldade"></div>
+
+    <hr>
+    <div id="palavra"></div>
+
+    <input type="text" id="letraInput" maxlength="1" autofocus />
+    <button class="btnChutarLetra" onclick="chutarLetra()">Chutar</button>
+
+    <div class="status-container">
+      <div id="letrasErradas"></div>
+      <div id="tentativas"></div>
+    </div>
+
+    <div id="mensagem"></div>
+  </div>
+
+  <dialog class="modal">
+    <h2 class="tituloModal"></h2>
+    <p class="textoModal"></p>
+    <button class="btnFecharModal">Reiniciar Jogo</button>
+  </dialog>
+
+  <audio id="somAcerto" src="./songs/correto.mp3"></audio>
+  <audio id="somErro" src="./songs/error-126627.mp3"></audio>
+  <audio id="somVitoria" src="./songs/win.mp3"></audio>
+  <audio id="somDerrota" src="./songs/lose.mp3"></audio>
+  <audio id="somFundo" src="./songs/fundo.mp3" loop></audio>
+
+  
+  <footer class="site-footer">
+    <p>&copy; <span id="ano-atual"></span> Jogo da Forca por Raphael Jovino.</p>
+    <p>Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="palavras.js"></script>
+  <script src="songs.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

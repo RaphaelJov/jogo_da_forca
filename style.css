@@ -1,0 +1,256 @@
+body {
+    background-image: url('./images/Copilot_fundo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fonte mais moderna */
+    margin: 0;
+    padding: 30px;
+}
+
+.container {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    /* Um pouco mais transparente */
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    color: #333;
+    text-align: center;
+}
+
+/* --- Hierarquia Visual --- */
+h1 {
+    margin-bottom: 5px;
+}
+
+#dica {
+    font-size: 1.1em;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+#nivelDificuldade {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    /* Deixa a primeira letra maiúscula */
+}
+
+#palavra {
+    font-size: 2.8em;
+    /* Maior destaque */
+    letter-spacing: 12px;
+    margin: 20px 0;
+    font-weight: bold;
+    min-height: 50px;
+    /* Garante altura mesmo quando vazio */
+}
+
+/* --- Bloco de Ação --- */
+input[type="text"] {
+    font-size: 1.2em;
+    width: 50px;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.btnChutarLetra {
+    font-size: 1.2em;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    background-color: #5c67f2;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btnChutarLetra:hover {
+    background-color: #4a54c2;
+}
+
+.btnReiniciar {
+    background-color: #28a745;
+    /* Verde Padrão */
+    font-size: 1.2em;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btnReiniciar:hover {
+    background-color: #218838;
+    /* Um tom mais escuro para o efeito hover */
+}
+
+/* --- Bloco de Status (com Flexbox) --- */
+.status-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+#letrasErradas,
+#tentativas {
+    width: 45%;
+    font-size: 1.1em;
+}
+
+#letrasErradas {
+    color: #d9534f;
+    /* Tom de vermelho mais suave */
+    font-weight: bold;
+}
+
+#tentativas {
+    font-weight: bold;
+}
+
+/* --- Outros Elementos --- */
+#mensagem {
+    font-size: 1.5em;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* --- Estilos do Modal de Fim de Jogo --- */
+
+/* A camada escura que cobre a tela inteira */
+/* A camada escura que cobre a tela inteira */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    /* Um pouco mais escuro para mais foco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    /* Começa invisível para a animação */
+    animation: fadeIn 0.3s forwards;
+    /* Animação de entrada */
+}
+
+/* Estilo do próprio modal */
+.modal {
+    background-color: #fdfdfd;
+    /* Um branco um pouco mais suave */
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color: #333;
+    max-width: 500px;
+    width: 90%;
+    border-top: 5px solid #5c67f2;
+    /* Detalhe de cor consistente com o jogo */
+    transform: scale(0.9);
+    /* Começa um pouco menor para a animação */
+    animation: zoomIn 0.3s 0.1s forwards;
+    /* Animação de entrada com um pequeno atraso */
+}
+
+.tituloModal {
+    font-size: 2.5em;
+    /* Maior e mais impactante */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.textoModal {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+    background-color: #f0f2f5;
+    /* Fundo sutil para destacar a palavra */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Botão de Reiniciar (Call-to-Action) */
+.btnFecharModal {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    /* Deixa o texto em maiúsculo */
+    letter-spacing: 1px;
+    /* Espaçamento entre as letras */
+    padding: 15px 20px;
+    margin-top: 10px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    /* Ocupa toda a largura do modal */
+    transition: all 0.2s ease-in-out;
+    /* Transição suave para tudo */
+}
+
+.btnFecharModal:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    /* Efeito de "levantar" ao passar o mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Classe para esconder e mostrar o modal (não muda) */
+.hidden {
+    display: none;
+}
+
+.site-footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    /* Espaço entre o jogo e o rodapé */
+    color: rgba(255, 255, 255, 0.7);
+    /* Branco com transparência para ser sutil */
+    font-size: 0.9em;
+}
+
+.site-footer p {
+    margin: 5px 0;
+    /* Pouco espaço entre as linhas do rodapé */
+}
